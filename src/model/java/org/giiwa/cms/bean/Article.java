@@ -35,6 +35,27 @@ public class Article extends Bean {
   @Column(name = "seq")
   int                       seq;
 
+  @Column(name = "reads")
+  int                       reads;
+
+  @Column(name = "likes")
+  int                       likes;
+
+  @Column(name = "commentable")
+  String                    commentable;
+
+  public int getReads() {
+    return reads;
+  }
+
+  public int getLikes() {
+    return likes;
+  }
+
+  public String getCommentable() {
+    return commentable;
+  }
+
   public long getId() {
     return id;
   }
@@ -98,6 +119,78 @@ public class Article extends Bean {
 
   public static Article load(long id) {
     return Helper.load(id, Article.class);
+  }
+
+  @Table(name = "gi_article_like")
+  public static class Like extends Bean {
+
+    /**
+     * 
+     */
+    private static final long serialVersionUID = 1L;
+
+    public static long up(long aid, String sid, long uid) {
+      try {
+        if (uid > 0) {
+          if (exists(W.create("aid", aid).and("uid", uid))) {
+            return -1;
+          }
+        } else {
+          if (exists(W.create("aid", aid).and("sid", sid))) {
+            return -1;
+          }
+        }
+
+        Helper.insert(V.create("aid", aid).set("uid", uid).set("sid", sid), Like.class);
+
+        return Helper.count(W.create("aid", aid), Like.class);
+
+      } catch (Exception e) {
+        log.error(e.getMessage(), e);
+      }
+
+      return -1;
+    }
+
+    public static boolean exists(W q) throws SQLException {
+      return Helper.exists(q, Like.class);
+    }
+  }
+
+  @Table(name = "gi_article_read")
+  public static class Read extends Bean {
+
+    /**
+     * 
+     */
+    private static final long serialVersionUID = 1L;
+
+    public static long read(long aid, String sid, long uid) {
+      try {
+        if (uid > 0) {
+          if (exists(W.create("aid", aid).and("uid", uid))) {
+            return -1;
+          }
+        } else {
+          if (exists(W.create("aid", aid).and("sid", sid))) {
+            return -1;
+          }
+        }
+
+        Helper.insert(V.create("aid", aid).set("uid", uid).set("sid", sid), Read.class);
+
+        return Helper.count(W.create("aid", aid), Like.class);
+
+      } catch (Exception e) {
+        log.error(e.getMessage(), e);
+      }
+
+      return -1;
+    }
+
+    public static boolean exists(W q) throws SQLException {
+      return Helper.exists(q, Read.class);
+    }
   }
 
 }

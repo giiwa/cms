@@ -32,6 +32,7 @@
 			<th>$lang.get('article.title')</th>
 			<th>$lang.get('article.content')</th>
 			<th>$lang.get('article.seq')</th>
+			<th>$lang.get('article.commentable')</th>
 			<th>$lang.get('article.updated')</th>
 			<th>$lang.get('article.created')</th>
 			<th></th>
@@ -45,6 +46,7 @@
 		<td>$!f.title</td>
 		<td>$!lang.truncate($!f.content,30)</td>
 		<td>$!f.seq</td>
+		<td>$!f.commentable</td>
 		<td>$!lang.format($f.updated, 'yyyy-MM-dd HH:mm:ss')</td>
 		<td>$!lang.format($f.created, 'yyyy-MM-dd HH:mm:ss')</td>
 		<td>
