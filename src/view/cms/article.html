@@ -1,17 +1,42 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
 <head>
 <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+<meta name="viewport"  content="width=device-width, height=device-height,initial-scale=1.0">
 
 <link rel="shortcut icon" href="/favicon.ico"
 	type="image/vnd.microsoft.icon" />
 <title>$!a.title</title>
-
+<style>
+#wraper{
+	max-width:800px;
+	margin: 0 auto;
+}
+#status{
+    margin-top: 20px;	
+}
+#comments ul{
+    list-style: none;	
+}
+</style>
 </head>
 <body>
+	<div id="wraper">
+		<h1>$!a.title</h1>
+		$!a.content
 
-<p>$!a.title</p>
-$!a.content
-
+		<div id='status'>
+			<span>$lang.get("cms.reads"):$!a.reads</span>
+			<span>$lang.get("cms.likes"):$!a.likes</span>
+		</div>
+		<div id='comments'>
+			<ul>
+				<li></li>
+			</ul>
+			<div class='comment'>
+				<div></div>
+			</div>
+		</div>
+	</div>
 </body>
 </html>
