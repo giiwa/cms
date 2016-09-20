@@ -8,7 +8,7 @@
 	type="image/vnd.microsoft.icon" />
 <title>$!a.title</title>
 <style>
-#wraper{
+#wrapper{
 	max-width:800px;
 	margin: 0 auto;
 }
@@ -21,20 +21,31 @@
 </style>
 </head>
 <body>
-	<div id="wraper">
-		<h1>$!a.title</h1>
-		$!a.content
+	<div id="wrapper">
+		<h1 class='title'>$!a.title</h1>
+		<div class='content'>$!a.content</div>
 
 		<div id='status'>
 			<span>$lang.get("cms.reads"):$!a.reads</span>
 			<span>$lang.get("cms.likes"):$!a.likes</span>
 		</div>
+		
 		<div id='comments'>
 			<ul>
-				<li></li>
+				#foreach($f in $a.comments)
+				<li>
+					<p class='user'>$f.owner_obj.nickname</p>
+					<p>$f.content</p>
+					<p>$!lang.format($f.created, 'yy-MM-dd hh:mm')</p>
+				</li>
+				#end
 			</ul>
 			<div class='comment'>
-				<div></div>
+				<form method="post">
+					<input type='hidden' name='id' value='$!a.id'/>
+					<textarea name='comment'></textarea>
+					<button type='submit'>$lang.get('btn.ok')</button>
+				</form>
 			</div>
 		</div>
 	</div>

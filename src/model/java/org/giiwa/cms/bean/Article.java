@@ -36,19 +36,28 @@ public class Article extends Bean {
   int                       seq;
 
   @Column(name = "reads")
-  int                       reads;
+  long                      reads;
 
   @Column(name = "likes")
-  int                       likes;
+  long                      likes;
 
   @Column(name = "commentable")
   String                    commentable;
 
-  public int getReads() {
+  private Comment           lastcomment;
+
+  public Comment getLastcomment() {
+    if (lastcomment == null) {
+      lastcomment = Helper.load(W.create("aid", id).sort("created", -1), Comment.class);
+    }
+    return lastcomment;
+  }
+
+  public long getReads() {
     return reads;
   }
 
-  public int getLikes() {
+  public long getLikes() {
     return likes;
   }
 
