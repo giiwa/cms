@@ -1,3 +1,14 @@
 menu.article=Article
 menu.cms=CMS
 menu.folder=Folder
+a.folder=Folder
+folder.content=Content
+folder.create.title=Create folder
+folder.created=Created
+folder.edit.title=Edit folder
+folder.id=Id
+folder.index.title=Folder management
+folder.name=Name
+folder.parent=Parent
+folder.seq=Seq
+folder.updated=Updated

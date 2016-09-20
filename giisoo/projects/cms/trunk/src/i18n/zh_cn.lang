@@ -1,3 +1,14 @@
 menu.article=文章
 menu.cms=内容管理
 menu.folder=目录
+a.folder=目录
+folder.content=内容
+folder.create.title=创建目录
+folder.created=创建
+folder.edit.title=编辑目录
+folder.id=Id
+folder.index.title=目录管理
+folder.name=名称
+folder.parent=父目录
+folder.seq=序号
+folder.updated=更新
