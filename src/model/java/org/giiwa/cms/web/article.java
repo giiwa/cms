@@ -8,6 +8,7 @@ import org.giiwa.core.bean.X;
 import org.giiwa.core.bean.Helper.V;
 import org.giiwa.core.bean.Helper.W;
 import org.giiwa.core.json.JSON;
+import org.giiwa.framework.bean.User;
 import org.giiwa.framework.web.Model;
 import org.giiwa.framework.web.Path;
 
@@ -93,16 +94,38 @@ public class article extends Model {
     JSON jo = JSON.create();
 
     long id = this.getLong("id");
-    Article.update(id, V.create());
-
-    Article a = Article.load(id);
-    if (a != null) {
-      jo.put("data", a);
+    User u = this.getUser();
+    long count = Article.Read.read(id, sid(), u == null ? -1 : u.getId());
+    if (count > 0) {
+      Article.update(id, V.create("reads", count));
+      jo.put("reads", count);
       jo.put("id", id);
       jo.put(X.STATE, 200);
     } else {
-      jo.put(X.MESSAGE, "id missed");
+      jo.put("id", id);
       jo.put(X.STATE, 201);
+      jo.put(X.MESSAGE, "already read");
+    }
+
+    this.response(jo);
+  }
+
+  @Path(path = "like")
+  public void like() {
+    JSON jo = JSON.create();
+
+    long id = this.getLong("id");
+    User u = this.getUser();
+    long count = Article.Like.up(id, sid(), u == null ? -1 : u.getId());
+    if (count > 0) {
+      Article.update(id, V.create("likes", count));
+      jo.put("likes", count);
+      jo.put("id", id);
+      jo.put(X.STATE, 200);
+    } else {
+      jo.put("id", id);
+      jo.put(X.STATE, 201);
+      jo.put(X.MESSAGE, "already like");
     }
 
     this.response(jo);
