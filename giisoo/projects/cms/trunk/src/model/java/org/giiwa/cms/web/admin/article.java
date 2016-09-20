@@ -1,6 +1,7 @@
 package org.giiwa.cms.web.admin;
 
 import org.giiwa.cms.bean.Article;
+import org.giiwa.cms.bean.Folder;
 import org.giiwa.core.bean.Beans;
 import org.giiwa.core.bean.X;
 import org.giiwa.core.json.JSON;
@@ -31,6 +32,11 @@ public class article extends Model {
     }
     Beans<Article> bs = Article.load(q, s, n);
     this.set(bs, s, n);
+
+    Beans<Folder> b1 = Folder.load(W.create().sort("name", 1), 0, 1000);
+    if (b1 != null) {
+      this.set("folders", b1.getList());
+    }
 
     this.show("/admin/article.index.html");
   }
@@ -82,6 +88,7 @@ public class article extends Model {
     Article d = Article.load(id);
     this.set(d.getJSON());
     this.set("id", id);
+    this.set("folderid", d.getFolderid());
     this.show("/admin/article.edit.html");
   }
 

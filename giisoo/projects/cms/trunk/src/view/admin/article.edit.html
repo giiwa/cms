@@ -1,0 +1,19 @@
+
+<div class='head'>$lang.get('article.edit.title')</div>
+
+#parse('/widget/widget.message.html')
+
+<div class='tabs'>
+	<a href='/admin/article?folderid=$!folderid' >$lang.get('a.article')</a>
+	<a href='/admin/article/edit?id=$!id' class='selected'>$lang.get('a.edit')</a>
+</div>
+
+<form action='/admin/article/edit'  method='post' class='form' enctype="multipart/form-data">
+	<input type='hidden' name='id' value='$!id' />
+	<div><label><h3>$lang.get('article.title')(<r>*</r>):</h3><input type='text' name='title' value="$!title"/></label></div>
+	<div><label><h3>$lang.get('article.seq'):</h3><input type='number' name='seq' value="$!seq"/></label></div>
+	<div><label><h3>$lang.get('article.content'):</h3><textarea name='content'>$!content</textarea></label></div>
+
+	<button type='submit'>$lang.get('btn.save')</button>
+</form>
+
