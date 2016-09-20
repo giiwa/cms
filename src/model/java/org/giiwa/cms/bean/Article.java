@@ -35,7 +35,27 @@ public class Article extends Bean {
   @Column(name = "seq")
   int                       seq;
 
-  private Folder            folder_obj;
+  public long getId() {
+    return id;
+  }
+
+  public long getFolderid() {
+    return folderid;
+  }
+
+  public String getTitle() {
+    return title;
+  }
+
+  public String getContent() {
+    return content;
+  }
+
+  public int getSeq() {
+    return seq;
+  }
+
+  private Folder folder_obj;
 
   public Folder getFolder_obj() {
     if (folder_obj == null) {
