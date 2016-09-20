@@ -9,7 +9,7 @@ import org.giiwa.framework.web.Path;
  * @author joe
  * 
  */
-public class demo extends Model {
+public class ch extends Model {
 
 	@Path()
 	public void onGet() {

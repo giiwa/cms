@@ -1,15 +1,16 @@
 package org.giiwa.cms.web.admin;
 
+import org.giiwa.cms.bean.Article;
+import org.giiwa.cms.bean.Folder;
 import org.giiwa.core.bean.Beans;
 import org.giiwa.core.bean.X;
 import org.giiwa.core.json.JSON;
 import org.giiwa.core.bean.Helper.V;
 import org.giiwa.core.bean.Helper.W;
-import org.giiwa.cms.bean.Demo;
 import org.giiwa.framework.web.Model;
 import org.giiwa.framework.web.Path;
 
-public class demo extends Model {
+public class folder extends Model {
 
 	@Path(login = true, access = "access.demo.admin")
 	public void onGet() {
@@ -23,7 +24,7 @@ public class demo extends Model {
 			q.and("name", name, W.OP_LIKE);
 			this.set("name", name);
 		}
-		Beans<Demo> bs = Demo.load(q, s, n);
+		Beans<Folder> bs = Folder.load(q, s, n);
 		this.set(bs, s, n);
 
 		this.show("/admin/demo.index.html");
@@ -32,7 +33,7 @@ public class demo extends Model {
 	@Path(path = "detail", login = true, access = "access.demo.admin")
 	public void detail() {
 		String id = this.getString("id");
-		Demo d = Demo.load(id);
+		Folder d = Folder.load(id);
 		this.set("b", d);
 		this.set("id", id);
 		this.show("/admin/demo.detail.html");
@@ -41,7 +42,7 @@ public class demo extends Model {
 	@Path(path = "delete", login = true, access = "access.demo.admin")
 	public void delete() {
 		String id = this.getString("id");
-		Demo.delete(id);
+		Folder.delete(id);
 		JSON jo = new JSON();
 		jo.put(X.STATE, 200);
 		this.response(jo);
@@ -53,7 +54,7 @@ public class demo extends Model {
 		  JSON jo = this.getJSON();
 			V v = V.create().copy(jo, "name");
 			v.set("content", this.getHtml("content"));
-			String id = Demo.create(v);
+			String id = Folder.create(v);
 
 			this.set(X.MESSAGE, lang.get("create.success"));
 			onGet();
@@ -70,14 +71,14 @@ public class demo extends Model {
 		  JSON jo = this.getJSON();
 			V v = V.create().copy(jo, "name");
 			v.set("content", this.getHtml("content"));
-			Demo.update(id, v);
+			Folder.update(id, v);
 
 			this.set(X.MESSAGE, lang.get("save.success"));
 			onGet();
 			return;
 		}
 
-		Demo d = Demo.load(id);
+		Folder d = Folder.load(id);
 		this.set(d.getJSON());
 		this.set("id", id);
 		this.show("/admin/demo.edit.html");
