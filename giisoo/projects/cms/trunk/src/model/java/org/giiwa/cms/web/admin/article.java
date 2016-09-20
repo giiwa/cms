@@ -56,6 +56,7 @@ public class article extends Model {
       JSON jo = this.getJSON();
       V v = V.create().copy(jo, "title");
       v.set("seq", this.getInt("seq"));
+      v.set("commentable", X.isSame("on", this.getString("commentable")) ? "on" : "off");
       v.set("folderid", this.getLong("folderid"));
       v.set("content", this.getHtml("content"));
       long id = Article.create(v);
@@ -66,6 +67,8 @@ public class article extends Model {
     }
 
     long folderid = this.getLong("folderid");
+    Folder f = Folder.load(folderid);
+    this.set("commentable", f == null ? "off" : f.getCommentable());
     this.set("folderid", folderid);
     this.show("/admin/article.create.html");
   }
@@ -77,6 +80,7 @@ public class article extends Model {
       JSON jo = this.getJSON();
       V v = V.create().copy(jo, "title");
       v.set("seq", this.getInt("seq"));
+      v.set("commentable", X.isSame("on", this.getString("commentable")) ? "on" : "off");
       v.set("content", this.getHtml("content"));
       Article.update(id, v);
 

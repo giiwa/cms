@@ -44,6 +44,7 @@ public class folder extends Model {
       JSON jo = this.getJSON();
       V v = V.create().copy(jo, "name");
       v.set("seq", this.getInt("seq"));
+      v.set("commentable", X.isSame("on", this.getString("commentable")) ? "on" : "off");
       v.set("parentid", this.getLong("parentid"));
       v.set("content", this.getHtml("content"));
       long id = Folder.create(v);
@@ -65,6 +66,7 @@ public class folder extends Model {
       JSON jo = this.getJSON();
       V v = V.create().copy(jo, "name");
       v.set("seq", this.getInt("seq"));
+      v.set("commentable", X.isSame("on", this.getString("commentable")) ? "on" : "off");
       v.set("content", this.getHtml("content"));
       Folder.update(id, v);
 
