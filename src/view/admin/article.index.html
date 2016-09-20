@@ -1,0 +1,69 @@
+<div class='head'>$lang.get('article.index.title')</div>
+
+#parse('/widget/widget.message.html')
+
+<div class='tabs'>
+	<a href='/admin/article?folderid=$!folderid' class='selected'>$lang.get('a.article')</a>
+</div>
+
+<div class='search'>
+	<form action='/admin/article' method='get' #if($currentpage>0) style='display:none' #end >
+		<span><label><h3>$lang.get('article.title'):</h3><input type='text' name='title' value='$!title'/></label></span>
+
+		<button type='submit' class='btns1 icon icon-search'></button>
+	</form>
+	
+	<div class='s1tab #if($currentpage>0) down #else up #end'>
+		<div class='arrow'></div>
+	</div>
+</div>
+
+<table id='article-table' class='tablesorter nospace' border="0" cellpadding="0" cellspacing="1">
+	<thead>
+		<tr>
+			<th>$lang.get('article.folder')</th>
+			<th>$lang.get('article.id')</th>
+			<th>$lang.get('article.title')</th>
+			<th>$lang.get('article.content')</th>
+			<th>$lang.get('article.seq')</th>
+			<th>$lang.get('article.updated')</th>
+			<th>$lang.get('article.created')</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+#foreach($f in $list)
+	<tr>
+		<td>$!f.folder_obj.name</td>
+		<td>$f.id</td>
+		<td>$!f.title</td>
+		<td>$!lang.truncate($!f.content,30)</td>
+		<td>$!f.seq</td>
+		<td>$!lang.format($f.updated, 'yyyy-MM-dd HH:mm:ss')</td>
+		<td>$!lang.format($f.created, 'yyyy-MM-dd HH:mm:ss')</td>
+		<td>
+			<a href='/admin/article/edit?id=$f.id'>$lang.get('a.edit')</a>
+			<a href='javascript:;' onclick='_delete("$f.id", this)'>$lang.get('a.delete')</a>
+		</td>
+	</tr>
+#end
+	</tbody>
+</table>
+
+ #parse('/widget/goto.page.html')
+
+#if($folderid>0)
+<div>
+	<a class='btn btn-info' href="/admin/article/create?folderid=$!folderid">$lang.get('a.create.article')</a>
+</div>
+#end
+
+<script>
+function _delete(id, o) {
+	if(confirm("$lang.get('title.are_u_sure_delete')")) {
+		$.post("/admin/article/delete", {id:id}, function(d){
+			$(o).parent().parent().remove();
+		})
+	}
+}
+</script>
