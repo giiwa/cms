@@ -26,6 +26,7 @@
 			<th>$lang.get('folder.name')</th>
 			<th>$lang.get('folder.content')</th>
 			<th>$lang.get('folder.seq')</th>
+			<th>$lang.get('folder.commentable')</th>
 			<th>$lang.get('folder.updated')</th>
 			<th>$lang.get('folder.created')</th>
 			<th></th>
@@ -39,6 +40,7 @@
 		<td>$!f.name</td>
 		<td>$!lang.truncate($!f.content,30)</td>
 		<td>$!f.seq</td>
+		<td>$!f.commentable</td>
 		<td>$!lang.format($f.updated, 'yyyy-MM-dd HH:mm:ss')</td>
 		<td>$!lang.format($f.created, 'yyyy-MM-dd HH:mm:ss')</td>
 		<td>

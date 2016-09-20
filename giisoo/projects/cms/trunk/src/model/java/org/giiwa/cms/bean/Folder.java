@@ -32,8 +32,15 @@ public class Folder extends Bean {
   @Column(name = "seq")
   int                       seq;
 
+  @Column(name = "commentable")
+  String                    commentable;
+
   @Column(name = "content")
   String                    content;
+
+  public String getCommentable() {
+    return commentable;
+  }
 
   private Folder            parent_obj;
 

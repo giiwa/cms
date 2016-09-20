@@ -5,6 +5,7 @@ import org.giiwa.cms.bean.Folder;
 import org.giiwa.core.bean.Beans;
 import org.giiwa.core.bean.Helper;
 import org.giiwa.core.bean.X;
+import org.giiwa.core.bean.Helper.V;
 import org.giiwa.core.bean.Helper.W;
 import org.giiwa.core.json.JSON;
 import org.giiwa.framework.web.Model;
@@ -86,4 +87,25 @@ public class article extends Model {
 
     this.response(jo);
   }
+
+  @Path(path = "read")
+  public void read() {
+    JSON jo = JSON.create();
+
+    long id = this.getLong("id");
+    Article.update(id, V.create());
+
+    Article a = Article.load(id);
+    if (a != null) {
+      jo.put("data", a);
+      jo.put("id", id);
+      jo.put(X.STATE, 200);
+    } else {
+      jo.put(X.MESSAGE, "id missed");
+      jo.put(X.STATE, 201);
+    }
+
+    this.response(jo);
+  }
+
 }
