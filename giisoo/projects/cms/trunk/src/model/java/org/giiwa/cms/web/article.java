@@ -36,6 +36,8 @@ public class article extends Model {
       }
     }
 
+    Article.Read.up(id, sid(), u == null ? -1 : u.getId());
+
     this.set("a", a);
     this.show("/cms/article.html");
   }
@@ -129,7 +131,7 @@ public class article extends Model {
 
     long id = this.getLong("id");
     User u = this.getUser();
-    long count = Article.Read.read(id, sid(), u == null ? -1 : u.getId());
+    long count = Article.Read.up(id, sid(), u == null ? -1 : u.getId());
     if (count > 0) {
       Article.update(id, V.create("reads", count));
       jo.put("reads", count);
@@ -152,7 +154,6 @@ public class article extends Model {
     User u = this.getUser();
     long count = Article.Like.up(id, sid(), u == null ? -1 : u.getId());
     if (count > 0) {
-      Article.update(id, V.create("likes", count));
       jo.put("likes", count);
       jo.put("id", id);
       jo.put(X.STATE, 200);
