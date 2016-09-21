@@ -33,6 +33,8 @@
 			<th>$lang.get('article.content')</th>
 			<th>$lang.get('article.seq')</th>
 			<th>$lang.get('article.commentable')</th>
+			<th>$lang.get('article.reads')</th>
+			<th>$lang.get('article.likes')</th>
 			<th>$lang.get('article.updated')</th>
 			<th>$lang.get('article.created')</th>
 			<th></th>
@@ -47,8 +49,10 @@
 		<td>$!lang.truncate($!f.content,30)</td>
 		<td>$!f.seq</td>
 		<td>$!f.commentable</td>
-		<td>$!lang.format($f.updated, 'yyyy-MM-dd HH:mm:ss')</td>
-		<td>$!lang.format($f.created, 'yyyy-MM-dd HH:mm:ss')</td>
+		<td>$!f.reads</td>
+		<td>$!f.likes</td>
+		<td>$!lang.format($f.updated, 'yy-MM-dd HH:mm:ss')</td>
+		<td>$!lang.format($f.created, 'yy-MM-dd HH:mm:ss')</td>
 		<td>
 			<a href='/admin/article/edit?id=$f.id'>$lang.get('a.edit')</a>
 			<a href='javascript:;' onclick='_delete("$f.id", this)'>$lang.get('a.delete')</a>

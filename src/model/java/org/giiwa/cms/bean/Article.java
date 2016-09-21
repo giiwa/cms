@@ -1,6 +1,7 @@
 package org.giiwa.cms.bean;
 
 import java.sql.SQLException;
+import java.util.List;
 
 import org.giiwa.core.bean.Bean;
 import org.giiwa.core.bean.Beans;
@@ -59,6 +60,16 @@ public class Article extends Bean {
 
   public long getLikes() {
     return likes;
+  }
+
+  private List<Comment> comments;
+
+  public List<Comment> getComments() {
+    if (comments == null) {
+      Beans<Comment> bs = Comment.load(W.create("aid", id), 0, 10);
+      comments = bs == null ? null : bs.getList();
+    }
+    return comments;
   }
 
   public String getCommentable() {
@@ -152,8 +163,11 @@ public class Article extends Bean {
 
         Helper.insert(V.create("aid", aid).set("uid", uid).set("sid", sid), Like.class);
 
-        return Helper.count(W.create("aid", aid), Like.class);
+        long count = Helper.count(W.create("aid", aid), Like.class);
 
+        Article.update(aid, V.create("likes", count));
+
+        return count;
       } catch (Exception e) {
         log.error(e.getMessage(), e);
       }
@@ -174,7 +188,7 @@ public class Article extends Bean {
      */
     private static final long serialVersionUID = 1L;
 
-    public static long read(long aid, String sid, long uid) {
+    public static long up(long aid, String sid, long uid) {
       try {
         if (uid > 0) {
           if (exists(W.create("aid", aid).and("uid", uid))) {
@@ -188,7 +202,9 @@ public class Article extends Bean {
 
         Helper.insert(V.create("aid", aid).set("uid", uid).set("sid", sid), Read.class);
 
-        return Helper.count(W.create("aid", aid), Like.class);
+        long count = Helper.count(W.create("aid", aid), Read.class);
+        Article.update(aid, V.create("reads", count));
+        return count;
 
       } catch (Exception e) {
         log.error(e.getMessage(), e);

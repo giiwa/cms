@@ -34,7 +34,7 @@
 			<ul>
 				#foreach($f in $a.comments)
 				<li>
-					<p class='user'>$f.owner_obj.nickname</p>
+					<p class='user'>$f.user_obj.nickname</p>
 					<p>$f.content</p>
 					<p>$!lang.format($f.created, 'yy-MM-dd hh:mm')</p>
 				</li>
@@ -43,11 +43,13 @@
 			<div class='comment'>
 				<form method="post">
 					<input type='hidden' name='id' value='$!a.id'/>
-					<textarea name='comment'></textarea>
+					<textarea name='content'></textarea>
 					<button type='submit'>$lang.get('btn.ok')</button>
 				</form>
 			</div>
 		</div>
 	</div>
+	
+	$!global.get('site.counter')
 </body>
 </html>
