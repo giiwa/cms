@@ -8,6 +8,7 @@ import org.giiwa.core.bean.Beans;
 import org.giiwa.core.bean.Column;
 import org.giiwa.core.bean.Helper;
 import org.giiwa.core.bean.X;
+import org.giiwa.framework.bean.User;
 import org.giiwa.core.bean.Helper.V;
 import org.giiwa.core.bean.Helper.W;
 import org.giiwa.core.bean.Table;
@@ -26,6 +27,12 @@ public class Article extends Bean {
 
   @Column(name = "folderid")
   long                      folderid;
+
+  @Column(name = "keywords")
+  String                    keywords;
+
+  @Column(name = "uid")
+  long                      uid;
 
   @Column(name = "title")
   String                    title;
@@ -94,6 +101,23 @@ public class Article extends Bean {
 
   public int getSeq() {
     return seq;
+  }
+
+  public String getKeywords() {
+    return keywords;
+  }
+
+  private User user_obj;
+
+  public User getUser_obj() {
+    if (user_obj == null) {
+      user_obj = User.loadById(uid);
+    }
+    return user_obj;
+  }
+
+  public long getUid() {
+    return uid;
   }
 
   private Folder folder_obj;
