@@ -1,7 +1,10 @@
 # 基于giiwa框架CMS模块
 关于giiwa， 请参阅 http://giiwa.org
 
-一个简单的内容管理模块， 提供了一个简单的／article?id=?页面， 可以修改 view/cms/article.html来提供更丰富完整的页面内容。
+简单的内容管理模块， 
+提供了一个简单的 /article?id=? 页面， 可以修改 view/cms/article.html 来提供更丰富完整的页面内容。
+提供了一个简单的 /myblog?uid=? 页面， 可以修改 view/cms/myblog.html 来提供更丰富完整的页面内容。
+
 <h1>功能介绍</h1>
 <ul>
 <li>目录管路</li>
