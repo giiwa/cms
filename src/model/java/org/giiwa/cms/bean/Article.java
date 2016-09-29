@@ -16,6 +16,8 @@ package org.giiwa.cms.bean;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
 
 import org.giiwa.core.bean.Bean;
 import org.giiwa.core.bean.Beans;
@@ -136,6 +138,21 @@ public class Article extends Bean {
 
   public int getSeq() {
     return seq;
+  }
+
+  private Set<String> keywords_obj;
+
+  public Set<String> getKeywords_obj() {
+    if (keywords_obj == null && !X.isEmpty(keywords)) {
+      keywords_obj = new TreeSet<String>();
+      String[] ss = keywords.split("[,; ，； ]");
+      for (String s : ss) {
+        if (!X.isEmpty(s)) {
+          keywords_obj.add(s);
+        }
+      }
+    }
+    return keywords_obj;
   }
 
   public String getKeywords() {
