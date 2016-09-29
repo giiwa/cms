@@ -1,3 +1,17 @@
+/*
+ * Copyright 2015 JIHU, Inc. and/or its affiliates.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * 
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+*/
 package org.giiwa.cms.bean;
 
 import java.sql.SQLException;
@@ -14,6 +28,7 @@ import org.giiwa.core.bean.Helper.W;
 import org.giiwa.core.bean.Table;
 import org.giiwa.core.bean.UID;
 
+// TODO: Auto-generated Javadoc
 @Table(name = "gi_article")
 public class Article extends Bean {
 
@@ -129,14 +144,38 @@ public class Article extends Bean {
     return folder_obj;
   }
 
+  /**
+   * Load.
+   *
+   * @param q
+   *          the q
+   * @param s
+   *          the s
+   * @param n
+   *          the n
+   * @return the beans
+   */
   public static Beans<Article> load(W q, int s, int n) {
     return Helper.load(q, s, n, Article.class);
   }
 
+  /**
+   * Delete.
+   *
+   * @param id
+   *          the id
+   */
   public static void delete(long id) {
     Helper.delete(id, Article.class);
   }
 
+  /**
+   * Creates the.
+   *
+   * @param v
+   *          the v
+   * @return the long
+   */
   public static long create(V v) {
     try {
       long id = UID.next("article.id");
@@ -151,16 +190,41 @@ public class Article extends Bean {
     return 0;
   }
 
+  /**
+   * Exists.
+   *
+   * @param id
+   *          the id
+   * @return true, if successful
+   * @throws SQLException
+   *           the SQL exception
+   */
   public static boolean exists(long id) throws SQLException {
     return Helper.exists(id, Article.class);
   }
 
+  /**
+   * Update.
+   *
+   * @param id
+   *          the id
+   * @param v
+   *          the v
+   * @return the int
+   */
   public static int update(long id, V v) {
 
     return Helper.update(id, v, Article.class);
 
   }
 
+  /**
+   * Load.
+   *
+   * @param id
+   *          the id
+   * @return the article
+   */
   public static Article load(long id) {
     return Helper.load(id, Article.class);
   }
@@ -173,6 +237,17 @@ public class Article extends Bean {
      */
     private static final long serialVersionUID = 1L;
 
+    /**
+     * Up.
+     *
+     * @param aid
+     *          the aid
+     * @param sid
+     *          the sid
+     * @param uid
+     *          the uid
+     * @return the long
+     */
     public static long up(long aid, String sid, long uid) {
       try {
         if (uid > 0) {
@@ -199,6 +274,15 @@ public class Article extends Bean {
       return -1;
     }
 
+    /**
+     * Exists.
+     *
+     * @param q
+     *          the q
+     * @return true, if successful
+     * @throws SQLException
+     *           the SQL exception
+     */
     public static boolean exists(W q) throws SQLException {
       return Helper.exists(q, Like.class);
     }
@@ -212,6 +296,17 @@ public class Article extends Bean {
      */
     private static final long serialVersionUID = 1L;
 
+    /**
+     * Up.
+     *
+     * @param aid
+     *          the aid
+     * @param sid
+     *          the sid
+     * @param uid
+     *          the uid
+     * @return the long
+     */
     public static long up(long aid, String sid, long uid) {
       try {
         if (uid > 0) {
@@ -237,6 +332,15 @@ public class Article extends Bean {
       return -1;
     }
 
+    /**
+     * Exists.
+     *
+     * @param q
+     *          the q
+     * @return true, if successful
+     * @throws SQLException
+     *           the SQL exception
+     */
     public static boolean exists(W q) throws SQLException {
       return Helper.exists(q, Read.class);
     }
