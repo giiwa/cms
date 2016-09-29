@@ -125,4 +125,7 @@ li.article>img{
     text-align: left;
     text-indent: 10px;
 }	
+li.article .status{
+	color: #888;
+    padding-left: 20px;	
 }
