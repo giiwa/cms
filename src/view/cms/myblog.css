@@ -106,7 +106,9 @@ li.article>img{
 }
 .nav-right li{
     text-align: left;
-    margin: 5px 0;
+    margin: 5px;
+	height: 40px;
+    overflow: hidden;    
 }
 
 .nav-right li img{
@@ -117,6 +119,10 @@ li.article>img{
 	border:1px solid #eee;
 }
 .nav-right div.title{
-	background: #456;
+	background: #1661af;
 	color: #fff;
+    line-height: 36px;
+    text-align: left;
+    text-indent: 10px;
+}	
 }
