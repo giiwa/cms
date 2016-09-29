@@ -77,16 +77,19 @@ header .logo{
 
 li.article{
 	padding-left: 200px;
+    min-height: 200px;	
 	position: relative;	
 }
 
 li.article h1{
-	color: #f33;
+	color: #218a1d;
 }
 
 li.article>img{
     position: absolute;
     left: 0;
-    top: 0;	
+    top: 0;
+    width: 180px;
+    height: 150px;    
 }
 

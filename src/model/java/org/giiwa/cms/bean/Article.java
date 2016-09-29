@@ -28,7 +28,6 @@ import org.giiwa.core.bean.Helper.W;
 import org.giiwa.core.bean.Table;
 import org.giiwa.core.bean.UID;
 
-// TODO: Auto-generated Javadoc
 @Table(name = "cms_article")
 public class Article extends Bean {
 
@@ -46,11 +45,20 @@ public class Article extends Bean {
   @Column(name = "keywords")
   String                    keywords;
 
+  @Column(name = "category")
+  String                    category;
+
   @Column(name = "uid")
   long                      uid;
 
   @Column(name = "title")
   String                    title;
+
+  @Column(name = "img")
+  String                    img;
+
+  @Column(name = "text")
+  String                    text;
 
   @Column(name = "content")
   String                    content;
@@ -74,6 +82,14 @@ public class Article extends Bean {
       lastcomment = Helper.load(W.create("aid", id).sort("created", -1), Comment.class);
     }
     return lastcomment;
+  }
+
+  public String getCategory() {
+    return category;
+  }
+
+  public String getImg() {
+    return img;
   }
 
   public long getReads() {
@@ -112,6 +128,10 @@ public class Article extends Bean {
 
   public String getContent() {
     return content;
+  }
+
+  public String getText() {
+    return text;
   }
 
   public int getSeq() {

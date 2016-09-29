@@ -14,8 +14,11 @@
 */
 package org.giiwa.cms.web.admin;
 
+import java.util.List;
+
 import org.giiwa.cms.bean.Article;
 import org.giiwa.cms.bean.Folder;
+import org.giiwa.core.base.Html;
 import org.giiwa.core.bean.Beans;
 import org.giiwa.core.bean.X;
 import org.giiwa.core.json.JSON;
@@ -23,11 +26,14 @@ import org.giiwa.core.bean.Helper.V;
 import org.giiwa.core.bean.Helper.W;
 import org.giiwa.framework.web.Model;
 import org.giiwa.framework.web.Path;
+import org.jsoup.nodes.Element;
 
 // TODO: Auto-generated Javadoc
 public class article extends Model {
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see org.giiwa.framework.web.Model#onGet()
    */
   @Path(login = true, access = "access.cms.admin")
@@ -78,11 +84,18 @@ public class article extends Model {
   public void create() {
     if (method.isPost()) {
       JSON jo = this.getJSON();
-      V v = V.create().copy(jo, "title");
+      V v = V.create().copy(jo, "title", "keywords", "category");
       v.set("seq", this.getInt("seq"));
       v.set("commentable", X.isSame("on", this.getString("commentable")) ? "on" : "off");
       v.set("folderid", this.getLong("folderid"));
-      v.set("content", this.getHtml("content"));
+      String content = this.getHtml("content");
+      v.set("content", content);
+      Html h = Html.create(content);
+      v.set("text", h.text());
+      List<Element> list = h.getTags("img");
+      if (list != null && list.size() > 0) {
+        v.set("img", list.get(0).attr("src"));
+      }
       long id = Article.create(v);
 
       this.set(X.MESSAGE, lang.get("create.success"));
