@@ -1,0 +1,22 @@
+[{
+			'name' : 'admin',
+			'childs' : [{
+						name : 'menu.cms',
+						classes : 'icon-drawer',
+						access : 'access.cms.admin',
+						seq : 1040,
+						childs : [{
+									name : 'menu.folder',
+									load : '/admin/folder',
+									access : 'access.cms.admin',
+									seq : 10,
+									classes : 'icon-folder'
+								}, {
+									name : 'menu.article',
+									load : '/admin/article',
+									access : 'access.cms.admin',
+									seq : 20,
+									classes : 'icon-html-five2'
+								}]
+					}]
+		}]

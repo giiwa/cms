@@ -26,8 +26,7 @@ import org.giiwa.core.bean.Table;
 import org.giiwa.core.bean.UID;
 import org.giiwa.core.bean.X;
 
-// TODO: Auto-generated Javadoc
-@Table(name = "gi_folder")
+@Table(name = "cms_folder")
 public class Folder extends Bean {
 
   /**

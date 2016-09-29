@@ -15,6 +15,7 @@
 package org.giiwa.cms.web;
 
 import org.giiwa.cms.bean.Article;
+import org.giiwa.cms.bean.People;
 import org.giiwa.core.bean.X;
 import org.giiwa.core.bean.Beans;
 import org.giiwa.core.bean.Helper.W;
@@ -39,6 +40,7 @@ public class myblog extends Model {
     if (u == null) {
       this.notfound();
     } else {
+      this.set("people", new People(uid));
       this.set("user", u);
       int s = this.getInt("s");
       int n = this.getInt("n", 20, "number.per.page");

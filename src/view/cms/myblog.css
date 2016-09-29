@@ -40,3 +40,10 @@ header{
     background: #f33;	
 }
 
+.panel{
+	display: inline-block;
+	width: 100%;
+}
+.center{
+	
+}

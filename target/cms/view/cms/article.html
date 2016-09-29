@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+<meta name="viewport"  content="width=device-width, height=device-height,initial-scale=1.0">
+
+<link rel="shortcut icon" href="/favicon.ico"
+	type="image/vnd.microsoft.icon" />
+<script src="/js/zepto.min.js"></script>
+<title>$!a.title</title>
+<style>
+#wrapper{
+	max-width:800px;
+	margin: 0 auto;
+}
+#wrapper .title{
+margin: 0 0 5px 0;
+font: normal 28px/36px "Microsoft YaHei";	
+}
+</style>
+</head>
+<body>
+	<div id="wrapper">
+		<h1 class='title'>$!a.title</h1>
+		<div class='content'>$!a.content</div>
+	</div>
+	$!global.get('site.counter')
+</body>
+</html>

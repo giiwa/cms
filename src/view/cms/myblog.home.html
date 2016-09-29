@@ -12,26 +12,32 @@
 </head>
 <body>
 <header>
-	#if($me.id == $user.id)
-	<div class='myeditor'>
-		
-	</div>
-	#end
-	<div class='splash'>
-		
+	<div class='center'>
+		<div class='logo'>
+			logo
+		</div>
+		<ul class='nav'>
+			#foreach($m in $menus)
+			<li href='$m.url'>$m.title</li>
+			#end
+		</ul>
+		#if($me.id == $user.id)
+		<div class='myeditor'>
+			
+		</div>
+		#end
+				
 	</div>
 </header>
-<div id="panel">
-	<div class='nav-top'>
+<div class='splash panel'>
+		
+</div>
+<div class="panel content">
+	<div class='list'>
 		
 	</div>
-	<div class='content'>
-		<div class='list'>
-			
-		</div>
-		<div class='nav-right'>
-			
-		</div>
+	<div class='nav-right'>
+		
 	</div>
 </div>
 <footer>

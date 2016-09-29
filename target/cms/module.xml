@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<module version="1.0">
+  <id>243</id>
+  <name>cms</name>
+  <package>org.giiwa.cms.web</package>
+  <screenshot>/images/demo_screenshot.png</screenshot>
+  <version>1.0.1</version>
+  <build>1609291012</build>
+  <enabled>true</enabled>
+  <readme>content management module</readme>
+  <listener>
+    <class>org.giiwa.cms.web.CmsListener</class>
+  </listener>
+  <setting>
+  </setting>
+  <filter>
+  </filter>
+  <depends>
+  </depends>
+</module>

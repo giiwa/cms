@@ -29,7 +29,7 @@ import org.giiwa.core.bean.Table;
 import org.giiwa.core.bean.UID;
 
 // TODO: Auto-generated Javadoc
-@Table(name = "gi_article")
+@Table(name = "cms_article")
 public class Article extends Bean {
 
   /**

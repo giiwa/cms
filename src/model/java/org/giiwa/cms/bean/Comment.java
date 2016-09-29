@@ -28,7 +28,7 @@ import org.giiwa.core.bean.X;
 import org.giiwa.framework.bean.User;
 
 // TODO: Auto-generated Javadoc
-@Table(name = "gi_comment")
+@Table(name = "cms_comment")
 public class Comment extends Bean {
 
   /**

@@ -1,0 +1,46 @@
+* {
+	font-size: 100%;
+	outline: 0;
+	vertical-align: baseline;
+	margin: 0;
+	padding: 0;
+}
+html, body {
+	width: 100%;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 14px;
+	line-height: 23px;
+	text-align: center;
+	background: #fff;
+}
+::-webkit-scrollbar, ::-webkit-scrollbar-thumb {
+	overflow: visible;
+}
+::-webkit-scrollbar {
+	width: 6px;
+	height: 6px;
+	background-color: #4EA6FF;
+}
+::-webkit-scrollbar-thumb {
+	background-color: #213B54;
+}
+::-webkit-scrollbar-thumb:hover {
+	background-color: #39648E;
+}
+::-webkit-scrollbar-thumb:active {
+	background-color: rgba(161, 208, 253, 0.9);
+}
+
+
+
+
+
+header{
+	height: 100px;
+    background: #f33;	
+}
+
+.panel{
+	display: inline-block;
+	width: 100%;
+}

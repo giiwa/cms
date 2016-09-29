@@ -1,0 +1,24 @@
+
+<div class='head'>$lang.get('folder.edit.title')</div>
+
+#parse('/widget/widget.message.html')
+
+<div class='tabs'>
+	<a href='/admin/folder' >$lang.get('a.folder')</a>
+	<a href='/admin/folder/edit?id=$id' class='selected'>$lang.get('a.edit')</a>
+</div>
+
+<form action='/admin/folder/edit'  method='post' class='form' enctype="multipart/form-data">
+	<input type='hidden' name='id' value='$id' />
+	<div><label><h3>$lang.get('folder.name')(<r>*</r>):</h3><input type='text' name='name' value="$!name"/></label></div>
+	<div><label><h3>$lang.get('folder.seq'):</h3><input type='number' name='seq' value="$!seq"/></label></div>
+	<div><label><h3>$lang.get('folder.commentable'):</h3><input type='checkbox' name='commentable' #if($commentable=='on') checked #end/></label></div>
+	<div><label><h3>$lang.get('folder.content'):</h3><textarea name='content'>$!content</textarea></label></div>
+	
+	<button type='submit'>$lang.get('btn.save')</button>
+</form>
+
+<div>
+	<a class='btn btn-info' href="/admin/folder/create?parentid=$id">$lang.get('a.create.folder')</a>
+	<a class='btn btn-success' href="/admin/article/create?parentid=$id">$lang.get('a.create.article')</a>
+</div>
