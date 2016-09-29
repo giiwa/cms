@@ -56,6 +56,9 @@ header .logo{
 	position: absolute;
 	left:0;
 }
+.nav>li{
+	display: inline-block;
+}
 .nav>li>a{
-	padding:0;
+	padding: 0 10px;	
 }
