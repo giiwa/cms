@@ -4,6 +4,7 @@ import org.giiwa.core.bean.Bean;
 import org.giiwa.core.bean.Beans;
 import org.giiwa.core.bean.Column;
 import org.giiwa.core.bean.Helper;
+import org.giiwa.core.bean.Helper.V;
 import org.giiwa.core.bean.Helper.W;
 import org.giiwa.core.bean.Table;
 
@@ -33,6 +34,10 @@ public class Category extends Bean {
       return bs.getList();
     }
     return null;
+  }
+
+  public static void create(V v) {
+    Helper.insert(v, Category.class);
   }
 
 }

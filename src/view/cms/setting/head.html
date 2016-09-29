@@ -17,15 +17,13 @@
 <header>
 	<div class='center'>
 		<div class='logo'>
-			$!this.get('logo')
+			$!helper.get('logo')
 		</div>
 		<ul class='nav'>
 			#foreach($m in $cates)
 			<li><a href='$m.url'>$m.title</a></li>
 			#end
-			#if($me.id == $user.id)
 			<li><a href='/cms/setting/base'>$lang.get('a.cms.myblog.setting')</a></li>
-			#end
 		</ul>
 	</div>
 </header>
