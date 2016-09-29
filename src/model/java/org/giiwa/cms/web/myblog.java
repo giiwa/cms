@@ -49,7 +49,8 @@ public class myblog extends Model {
       this.set("user", u);
       int s = this.getInt("s");
       int n = this.getInt("n", 20, "number.per.page");
-      Beans<Article> bs = Article.load(W.create("uid", uid).sort("created", -1), s, n);
+      W q = W.create(); // .and("uid", uid);
+      Beans<Article> bs = Article.load(q.sort("created", -1), s, n);
       this.set(bs, s, n);
 
       this.set("cates", Category.load(W.create("uid", uid).sort("seq", 1), 0, 100));

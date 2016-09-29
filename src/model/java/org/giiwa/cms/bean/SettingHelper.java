@@ -29,7 +29,7 @@ public class SettingHelper {
     if (p != null) {
       return p.getVal();
     }
-    return name;
+    return null;
   }
 
   Map<String, Setting> cache = new HashMap<String, Setting>();

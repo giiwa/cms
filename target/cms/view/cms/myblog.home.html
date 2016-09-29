@@ -30,20 +30,34 @@
 	</div>
 </header>
 <div class='splash panel'>
-	<div class='bg' style="background-image:url($!helper.get('splash.background'))"></div>
-</div>
-<div class="panel content">
 	<div class='center'>
-		<div class='list'>
-			
-		</div>
+		#if($helper.get('splash.background'))
+		<img src="$helper.get('splash.background')"/>
+		#else
+		<img src="/images/f1.jpg"/>
+		#end
+	</div>
+</div>
+<div class="articles panel">
+	<div class='center'>
+		<ul class='list'>
+			#foreach($p in $list)
+			<li class='article'>
+				<img src="$p.img"/>
+				<h1>$p.title</h1>
+				<div class='status'>aaaa</div>
+				<div class='content'>$!p.content</div>
+				<div class='keywords'>$!p.keyword</div>
+			</li>
+			#end
+		</ul>
 		<div class='nav-right'>
 			
 		</div>
 	</div>
 </div>
 <footer>
-	
+	<div>Powered by giiwa, <a href='http://giiwa.org' target='_blank'>giiwa.org</a></div>
 </footer>
 <script src="/bootstrap/js/bootstrap.min.js"></script>
 

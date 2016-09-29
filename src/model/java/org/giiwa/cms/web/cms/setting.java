@@ -43,7 +43,7 @@ public class setting extends Model {
     SettingHelper h = new SettingHelper(login.getId());
     if (method.isPost()) {
       String splash = this.getString("splash");
-      h.set("splash", splash);
+      h.set("splash.background", splash);
     }
 
     this.set("cates", Category.load(W.create("uid", login.getId()).sort("seq", 1), 0, 100));

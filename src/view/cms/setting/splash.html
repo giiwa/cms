@@ -1,0 +1,6 @@
+#parse('/cms/setting/head.html')
+<form action='/cms/setting/base' method="post">
+	<input type='text' name='splash' value="$!helper.get('splash.background')"/>
+	<button type='submit'>ok</button>
+</form>
+#parse('/cms/setting/foot.html')
