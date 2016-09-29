@@ -49,6 +49,7 @@ header{
     width: 1000px;
     display: inline-block;
     margin: 0 auto;	
+    position: relative;
 }
 header .logo{
 	position: absolute;
