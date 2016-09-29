@@ -17,27 +17,29 @@
 <header>
 	<div class='center'>
 		<div class='logo'>
-			$ph.get('logo')
+			$!helper.get('logo')
 		</div>
 		<ul class='nav'>
 			#foreach($m in $cates)
 			<li><a href='$m.url'>$m.title</a></li>
 			#end
 			#if($me.id == $user.id)
-			<li><a href='/myblog/setting'>$lang.get('a.cms.myblog.setting')</a></li>
+			<li><a href='/myblog/setting/base'>$lang.get('a.cms.myblog.setting')</a></li>
 			#end
 		</ul>
 	</div>
 </header>
 <div class='splash panel'>
-	
+	<div class='bg' style="background-image:url($!helper.get('splash.background'))"></div>
 </div>
 <div class="panel content">
-	<div class='list'>
-		
-	</div>
-	<div class='nav-right'>
-		
+	<div class='center'>
+		<div class='list'>
+			
+		</div>
+		<div class='nav-right'>
+			
+		</div>
 	</div>
 </div>
 <footer>

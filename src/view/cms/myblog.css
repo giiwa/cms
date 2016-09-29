@@ -36,14 +36,24 @@ html, body {
 
 
 header{
-	height: 100px;
-    background: #f33;	
+    height: 80px;
+    background: #fff;
+    line-height: 80px;
+    color: #333;
+    position: relative;
 }
 
 .panel{
-	display: inline-block;
-	width: 100%;
 }
 .center{
-	
+    width: 1000px;
+    display: inline-block;
+    margin: 0 auto;	
+}
+header .logo{
+	position: absolute;
+	left:0;
+}
+.nav>li>a{
+	padding:0;
 }

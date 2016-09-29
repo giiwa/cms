@@ -14,6 +14,9 @@
 */
 package org.giiwa.cms.web;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.giiwa.cms.bean.Article;
 import org.giiwa.cms.bean.Category;
 import org.giiwa.cms.bean.Setting;
@@ -42,7 +45,7 @@ public class myblog extends Model {
     if (u == null) {
       this.notfound();
     } else {
-      this.set("ph", new SettingHelper(uid));
+      this.set("helper", new SettingHelper(uid));
       this.set("user", u);
       int s = this.getInt("s");
       int n = this.getInt("n", 20, "number.per.page");
@@ -53,11 +56,6 @@ public class myblog extends Model {
 
       this.show("/cms/myblog.home.html");
     }
-  }
-
-  @Path(path = "setting", login = true)
-  public void setting() {
-
   }
 
 }

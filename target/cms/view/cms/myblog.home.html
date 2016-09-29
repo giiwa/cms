@@ -6,35 +6,46 @@
 
 <link rel="shortcut icon" href="/favicon.ico"
 	type="image/vnd.microsoft.icon" />
+
+<link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <link href='/cms/myblog.css' rel='stylesheet' />
 <script src="/js/jquery-2.1.4.min.js"></script>
+
 <title>$!user.nickname - $lang.get("myblog.title")</title>
 </head>
 <body>
 <header>
-	#if($me.id == $user.id)
-	<div class='myeditor'>
-		
-	</div>
-	#end
-	<div class='menu'>
-		
+	<div class='center'>
+		<div class='logo'>
+			$!helper.get('logo')
+		</div>
+		<ul class='nav'>
+			#foreach($m in $cates)
+			<li><a href='$m.url'>$m.title</a></li>
+			#end
+			#if($me.id == $user.id)
+			<li><a href='/myblog/setting/base'>$lang.get('a.cms.myblog.setting')</a></li>
+			#end
+		</ul>
 	</div>
 </header>
 <div class='splash panel'>
-		
+	<div class='bg' style="background-image:url($!helper.get('splash.background'))"></div>
 </div>
 <div class="panel content">
-	<div class='list'>
-		
-	</div>
-	<div class='nav-right'>
-		
+	<div class='center'>
+		<div class='list'>
+			
+		</div>
+		<div class='nav-right'>
+			
+		</div>
 	</div>
 </div>
 <footer>
 	
 </footer>
+<script src="/bootstrap/js/bootstrap.min.js"></script>
 
 $!global.get('site.counter')
 </body>

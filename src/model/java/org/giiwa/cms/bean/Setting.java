@@ -23,6 +23,12 @@ public class Setting extends Bean {
   @Column(name = "val")
   String                    val;
 
+  
+  public String getVal() {
+    return val;
+  }
+
+
   public static Setting load(W q) {
     return Helper.load(q, Setting.class);
   }
