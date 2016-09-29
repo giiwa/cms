@@ -14,8 +14,39 @@
 */
 package org.giiwa.cms.web;
 
+import org.giiwa.cms.bean.Article;
+import org.giiwa.core.bean.X;
+import org.giiwa.core.bean.Beans;
+import org.giiwa.core.bean.Helper.W;
+import org.giiwa.framework.bean.User;
 import org.giiwa.framework.web.Model;
+import org.giiwa.framework.web.Path;
 
 public class myblog extends Model {
+
+  @Path()
+  public void onGet() {
+    User u = this.getUser();
+    this.set("me", u);
+
+    long uid = this.getLong("uid");
+    if (uid <= 0) {
+      uid = X.toLong(this.path, 0);
+    }
+
+    u = User.load(uid);
+
+    if (u == null) {
+      this.notfound();
+    } else {
+      this.set("user", u);
+      int s = this.getInt("s");
+      int n = this.getInt("n", 20, "number.per.page");
+      Beans<Article> bs = Article.load(W.create("uid", uid).sort("created", -1), s, n);
+      this.set(bs, s, n);
+
+      this.show("/cms/myblog.home.html");
+    }
+  }
 
 }
