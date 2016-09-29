@@ -44,15 +44,25 @@
 			#foreach($p in $list)
 			<li class='article'>
 				<img src="$p.img"/>
-				<h1>$p.title</h1>
-				<div class='status'>aaaa</div>
-				<div class='content'>$!p.text</div>
+				<h1>$!lang.truncate($p.title, 30)</h1>
+				<div class='status'>state , date, owner, reads, votes</div>
+				<div class='content'>$!lang.truncate($p.text, 200)</div>
 				<div class='keywords'>$!p.keyword</div>
 			</li>
 			#end
 		</ul>
 		<div class='nav-right'>
-			
+			<div class=''>
+				<div class='title'>aaaa</div>
+				<ul>
+					#foreach($p in $list)
+					<li>
+						<img src="$p.img">
+						<span>$!lang.truncate($p.title, 20)</span>
+					</li>
+					#end
+				</ul>
+			</div>
 		</div>
 	</div>
 </div>

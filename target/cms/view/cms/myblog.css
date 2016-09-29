@@ -70,9 +70,15 @@ header .logo{
 	width: 100%;
 	height: 100%;
 }
-.articles ul{
+.articles ul.list{
 	list-style: none;
 	text-align: left;
+    width: 75%;	
+    float: left;    
+}
+.articles .nav-right{
+    width: 25%;
+    float: right;	
 }
 
 li.article{
@@ -83,6 +89,7 @@ li.article{
 
 li.article h1{
 	color: #218a1d;
+	font-size: 22px;
 }
 
 li.article>img{
@@ -90,6 +97,19 @@ li.article>img{
     left: 0;
     top: 0;
     width: 180px;
-    height: 150px;    
+    height: 150px;
+    border: 1px solid #eee;     
 }
 
+.nav-right ul{
+	list-style: none;
+}
+.nav-right li{
+	width: 100%;
+	display: inline-block;
+}
+
+.nav-right li img{
+	width: 40px;
+	height: 40px;
+}
