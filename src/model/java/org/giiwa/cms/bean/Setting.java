@@ -6,8 +6,8 @@ import org.giiwa.core.bean.Helper;
 import org.giiwa.core.bean.Helper.W;
 import org.giiwa.core.bean.Table;
 
-@Table(name = "cms_people")
-public class People extends Bean {
+@Table(name = "cms_setting")
+public class Setting extends Bean {
 
   /**
    * 
@@ -23,8 +23,8 @@ public class People extends Bean {
   @Column(name = "val")
   String                    val;
 
-  public static People load(W q) {
-    return Helper.load(q, People.class);
+  public static Setting load(W q) {
+    return Helper.load(q, Setting.class);
   }
 
 }

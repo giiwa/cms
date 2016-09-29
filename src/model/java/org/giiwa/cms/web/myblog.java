@@ -15,7 +15,9 @@
 package org.giiwa.cms.web;
 
 import org.giiwa.cms.bean.Article;
-import org.giiwa.cms.bean.People;
+import org.giiwa.cms.bean.Category;
+import org.giiwa.cms.bean.Setting;
+import org.giiwa.cms.bean.SettingHelper;
 import org.giiwa.core.bean.X;
 import org.giiwa.core.bean.Beans;
 import org.giiwa.core.bean.Helper.W;
@@ -40,15 +42,22 @@ public class myblog extends Model {
     if (u == null) {
       this.notfound();
     } else {
-      this.set("people", new People(uid));
+      this.set("ph", new SettingHelper(uid));
       this.set("user", u);
       int s = this.getInt("s");
       int n = this.getInt("n", 20, "number.per.page");
       Beans<Article> bs = Article.load(W.create("uid", uid).sort("created", -1), s, n);
       this.set(bs, s, n);
 
+      this.set("cates", Category.load(W.create("uid", uid).sort("seq", 1), 0, 100));
+
       this.show("/cms/myblog.home.html");
     }
+  }
+
+  @Path(path = "setting", login = true)
+  public void setting() {
+
   }
 
 }
