@@ -46,13 +46,13 @@ header {
 	color: #333;
 	position: relative;
 }
-footer{
-    line-height: 42px;
-    border-top: 1px solid #ccc;	
+footer {
+	line-height: 42px;
+	border-top: 1px solid #ccc;
 }
 .panel {
 	border: none;
-    box-shadow: none;	
+	box-shadow: none;
 }
 
 .center {
@@ -93,14 +93,14 @@ header .logo {
 	width: 75%;
 	float: left;
 }
-.articles .list .title{
+.articles .list .title {
 	background: #1f715a;
-    line-height: 36px;
-    color: #fff;
-    text-indent: 10px;
-    font-size: 16px;	
+	line-height: 36px;
+	color: #fff;
+	text-indent: 10px;
+	font-size: 16px;
 }
-.articles .list ul{
+.articles .list ul {
 	list-style: none;
 }
 .articles .nav-right {
@@ -162,6 +162,9 @@ li.article .status {
 li.article .status span {
 	margin-right: 10px;
 }
+li.article .status span:hover {
+	color: #32922e;
+}
 
 li.article .content {
 	line-height: 28px;
@@ -189,7 +192,7 @@ form.search-inline input {
 	width: 180px;
 	line-height: 32px;
 	height: 32px;
-	padding: 0 10px;	
+	padding: 0 10px;
 }
 form.search-inline button {
 	cursor: pointer;
@@ -258,3 +261,20 @@ a.page_1, a.page_2 {
 	margin-left: 16px;
 	width: initial;
 }
+
+li.article .keywords {
+	color: #af7f12;
+}
+
+.nav-right .hotest div.title {
+	background-color: #901818;
+}
+
+.nav-right .categories div.title {
+	background-color: #2283c7;
+}
+
+.nav-right .keywords div.title {
+	background-color: #af7f12;
+}
+
