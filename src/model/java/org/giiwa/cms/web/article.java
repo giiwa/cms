@@ -66,16 +66,16 @@ public class article extends Model {
     this.set("helper", new SettingHelper(a.getUid()));
     _usage(a.getUid());
 
-    this.show("/cms/article.html");
+    this.show("/cms/article.detail.html");
   }
 
   private void _usage(long uid) {
-    
+
     this.set("cates", Category.load(W.create("uid", uid).sort("seq", 1), 0, 100));
     this.set("latest", Article.load(W.create("uid", uid).sort("created", -1), 5));
     this.set("hotest", Article.load(W.create("uid", uid).sort("updated", -1), 5));
     this.set("categories", Category.load(W.create("uid", uid).sort("title", 1), 0, 5));
-    
+
   }
 
   /**
@@ -218,6 +218,15 @@ public class article extends Model {
     }
 
     this.response(jo);
+  }
+
+  @Path(path = "create", login = true)
+  public void create() {
+    if (method.isPost()) {
+      
+    }
+
+    this.show("/cms/article.create.html");
   }
 
 }

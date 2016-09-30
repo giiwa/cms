@@ -23,6 +23,7 @@ import org.giiwa.core.bean.Helper;
 import org.giiwa.core.bean.Helper.V;
 import org.giiwa.core.bean.Helper.W;
 import org.giiwa.core.bean.Table;
+import org.giiwa.core.task.Task;
 
 // TODO: Auto-generated Javadoc
 @Table(name = "cms_category")
@@ -77,8 +78,14 @@ public class Category extends Bean {
     Helper.insert(v, Category.class);
   }
 
-  public static void repair(long uid) {
+  public static void repair(final long uid) {
+    new Task() {
+      @Override
+      public void onExecute() {
+        
+      }
 
+    }.schedule(0);
   }
 
 }

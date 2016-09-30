@@ -75,7 +75,7 @@
 				<ul>
 					#foreach($p in $categories)
 					<li>
-						<span><a href='/article?id=$p.id'>$!lang.truncate($p.title, 20)(10)</a></span>
+						<span><a href='/article?id=$p.id'>$!lang.truncate($p.title, 20)($p.count)</a></span>
 					</li>
 					#end
 				</ul>
@@ -85,7 +85,7 @@
 				<ul>
 					#foreach($p in $kywords)
 					<li>
-						<span><a href='/article?id=$p.id'>$!lang.truncate($p.title, 20)(10)</a></span>
+						<span><a href='/article?id=$p.id'>$!lang.truncate($p.word, 20)($p.count)</a></span>
 					</li>
 					#end
 				</ul>

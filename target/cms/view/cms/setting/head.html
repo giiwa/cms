@@ -21,9 +21,11 @@
 		</div>
 		<ul class='nav pull-right'>
 			<li><a href='/myblog?uid=$!user.id'>$lang.get('a.home')</a></li>
+
 			#foreach($m in $cates)
 			<li><a href='$m.url'>$m.title</a></li>
 			#end
+
 			<li><a href='/cms/setting/base'>$lang.get('a.setting')</a></li>
 		</ul>
 	</div>
