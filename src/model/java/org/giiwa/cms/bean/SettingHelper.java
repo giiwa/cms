@@ -23,7 +23,6 @@ import org.giiwa.core.bean.Helper;
 import org.giiwa.core.bean.Helper.V;
 import org.giiwa.core.bean.Helper.W;
 
-// TODO: Auto-generated Javadoc
 public class SettingHelper {
 
   static Log log = LogFactory.getLog(SettingHelper.class);

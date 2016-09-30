@@ -14,6 +14,8 @@
 */
 package org.giiwa.cms.bean;
 
+import java.util.List;
+
 import org.giiwa.core.bean.Bean;
 import org.giiwa.core.bean.Beans;
 import org.giiwa.core.bean.Column;
@@ -23,7 +25,7 @@ import org.giiwa.core.bean.Helper.W;
 import org.giiwa.core.bean.Table;
 
 // TODO: Auto-generated Javadoc
-@Table(name = "cms_menu")
+@Table(name = "cms_category")
 public class Category extends Bean {
 
   /**
@@ -43,6 +45,9 @@ public class Category extends Bean {
   @Column(name = "url")
   String                    url;
 
+  @Column(name = "count")
+  long                      count;
+
   /**
    * Load.
    *
@@ -54,7 +59,7 @@ public class Category extends Bean {
    *          the n
    * @return the object
    */
-  public static Object load(W q, int s, int n) {
+  public static List<Category> load(W q, int s, int n) {
     Beans<Category> bs = Helper.load(q, s, n, Category.class);
     if (bs != null) {
       return bs.getList();
@@ -70,6 +75,10 @@ public class Category extends Bean {
    */
   public static void create(V v) {
     Helper.insert(v, Category.class);
+  }
+
+  public static void repair(long uid) {
+
   }
 
 }

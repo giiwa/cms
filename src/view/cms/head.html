@@ -24,11 +24,17 @@
 			#if($uri != '/myblog')
 			<li><a href='/myblog?uid=$user.id'>$lang.get('a.home')</a></li>
 			#end
+			
 			#foreach($m in $cates)
 			<li><a href='$m.url'>$m.title</a></li>
 			#end
+			
 			#if($me.id == $user.id)
 			<li><a href='/cms/setting/base'>$lang.get('a.setting')</a></li>
+			#elseif($me)
+			<li>Welome <a href='/myblog?uid=$me.id'>$!me.nickname</a></li>
+			#else
+			<li><a href='/user/login'>$lang.get('a.login')</a></li>
 			#end
 		</ul>
 	</div>

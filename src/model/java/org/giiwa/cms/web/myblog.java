@@ -50,9 +50,8 @@ public class myblog extends Model {
     } else {
       this.set("user", u);
       this.set("helper", new SettingHelper(uid));
-      this.set("cates", Category.load(W.create("uid", uid).sort("seq", 1), 0, 100));
-      this.set("latest", Article.load(W.create("uid", uid).sort("created", -1), 5));
-      this.set("hotest", Article.load(W.create("uid", uid).sort("updated", -1), 5));
+
+      _usage(uid);
 
       int s = this.getInt("s");
       int n = this.getInt("n", 20, "number.per.page");
@@ -107,6 +106,15 @@ public class myblog extends Model {
 
       this.show("/cms/myblog.home.html");
     }
+  }
+
+  private void _usage(long uid) {
+
+    this.set("cates", Category.load(W.create("uid", uid).sort("seq", 1), 0, 100));
+    this.set("latest", Article.load(W.create("uid", uid).sort("created", -1), 5));
+    this.set("hotest", Article.load(W.create("uid", uid).sort("updated", -1), 5));
+    this.set("categories", Category.load(W.create("uid", uid).sort("title", 1), 0, 5));
+
   }
 
 }

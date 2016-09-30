@@ -64,11 +64,18 @@ public class article extends Model {
 
     this.set("user", a.getUser_obj());
     this.set("helper", new SettingHelper(a.getUid()));
-    this.set("cates", Category.load(W.create("uid", a.getUid()).sort("seq", 1), 0, 100));
-    this.set("latest", Article.load(W.create("uid", a.getUid()).sort("created", -1), 5));
-    this.set("hotest", Article.load(W.create("uid", a.getUid()).sort("updated", -1), 5));
+    _usage(a.getUid());
 
     this.show("/cms/article.html");
+  }
+
+  private void _usage(long uid) {
+    
+    this.set("cates", Category.load(W.create("uid", uid).sort("seq", 1), 0, 100));
+    this.set("latest", Article.load(W.create("uid", uid).sort("created", -1), 5));
+    this.set("hotest", Article.load(W.create("uid", uid).sort("updated", -1), 5));
+    this.set("categories", Category.load(W.create("uid", uid).sort("title", 1), 0, 5));
+    
   }
 
   /**
