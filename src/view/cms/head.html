@@ -31,8 +31,10 @@
 			
 			#if($me.id == $user.id)
 			<li><a href='/cms/setting/base'>$lang.get('a.setting')</a></li>
+			<li><a href='/user/logout'>$lang.get('a.logout')</a></li>
 			#elseif($me)
 			<li>Welome <a href='/myblog?uid=$me.id'>$!me.nickname</a></li>
+			<li><a href='/user/logout'>$lang.get('a.logout')</a></li>
 			#else
 			<li><a href='/user/login'>$lang.get('a.login')</a></li>
 			#end

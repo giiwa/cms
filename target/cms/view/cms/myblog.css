@@ -291,3 +291,11 @@ li.article .keywords {
 .setting.panel{
     border-top: 1px solid #aaa;	
 }
+
+.nav-right > div.compose{
+	padding: 20px;
+}
+
+.nav-right > div.compose a{
+	padding: 6px 20px;
+}

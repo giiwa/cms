@@ -75,6 +75,9 @@ public class Article extends Bean {
   @Column(name = "likes")
   long                      likes;
 
+  @Column(name = "publish")
+  int                       publish;
+
   @Column(name = "commentable")
   String                    commentable;
 
@@ -85,6 +88,10 @@ public class Article extends Bean {
       lastcomment = Helper.load(W.create("aid", id).sort("created", -1), Comment.class);
     }
     return lastcomment;
+  }
+
+  public int getPublish() {
+    return publish;
   }
 
   public String getCategory() {
