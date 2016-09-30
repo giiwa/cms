@@ -126,7 +126,6 @@ li.article > img {
 	top: 0;
 	width: 180px;
 	height: 150px;
-	border: 1px solid #eee;
 }
 
 .nav-right ul {
@@ -282,6 +281,8 @@ li.article .keywords {
 .setting .nav-left{
 	width: 200px;
 	float: left;
+	border-right: 1px solid #ccc;
+	margin-top: 20px;	
 }
 
 .setting .nav > li{

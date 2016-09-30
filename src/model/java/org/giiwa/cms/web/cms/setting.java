@@ -16,9 +16,11 @@ public class setting extends Model {
       String logo = this.getString("logo");
       h.set("logo", logo);
     }
-
+    
+    this.set("user", login);
     this.set("cates", Category.load(W.create("uid", login.getId()).sort("seq", 1), 0, 100));
     this.set("helper", h);
+    
     this.show("/cms/setting/base.html");
   }
 
@@ -33,6 +35,7 @@ public class setting extends Model {
       }
     }
 
+    this.set("user", login);
     this.set("cates", Category.load(W.create("uid", login.getId()).sort("seq", 1), 0, 100));
     this.set("helper", h);
     this.show("/cms/setting/category.html");
@@ -46,8 +49,10 @@ public class setting extends Model {
       h.set("splash.background", splash);
     }
 
+    this.set("user", login);
     this.set("cates", Category.load(W.create("uid", login.getId()).sort("seq", 1), 0, 100));
     this.set("helper", h);
+    
     this.show("/cms/setting/base.html");
   }
 

@@ -36,20 +36,20 @@ public class myblog extends Model {
 
   @Path()
   public void onGet() {
-    User u = this.getUser();
-    this.set("me", u);
+    User user = this.getUser();
+    this.set("me", user);
 
     long uid = this.getLong("uid");
-    if (uid <= 0) {
+    if (uid < 0) {
       uid = X.toLong(this.path, 0);
     }
 
-    u = User.load(uid);
+    user = User.load(uid);
 
-    if (u == null) {
+    if (user == null) {
       this.notfound();
     } else {
-      this.set("user", u);
+      this.set("user", user);
       this.set("helper", new SettingHelper(uid));
 
       _usage(uid);

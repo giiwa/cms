@@ -14,7 +14,9 @@
 			#if($list.size() > 0)
 				#foreach($p in $list)
 				<li class='article'>
-					<img src="$p.img"/>
+					#if($p.img)
+					<img src="$p.img?size=180x150"/>
+					#end
 					<h1><a href='/article?id=$p.id'>$!lang.truncate($p.title, 30)</a></h1>
 					<div class='status'>
 						<span class='icon-user'>$!p.user_obj.nickname</span>
@@ -51,9 +53,11 @@
 			      	<button type="submit" class="icon-search"></button>
 				</form>
 			</div>
+			#if($me.id == $user.id)
 			<div class='compose'>
 				<a class='btn btn-success' href='/article/create'>$lang.get('a.compose')</a>
 			</div>
+			#end
 			<div class='latest'>
 				<div class='title'>$lang.get('latest.title')</div>
 				<ul>
