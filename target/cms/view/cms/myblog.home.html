@@ -2,34 +2,38 @@
 
 <div class="articles panel">
 	<div class='center'>
-		<ul class='list'>
-			#foreach($p in $list)
-			<li class='article'>
-				<img src="$p.img"/>
-				<h1><a href='/article?id=$p.id'>$!lang.truncate($p.title, 30)</a></h1>
-				<div class='status'>
-					<span class='icon-user'>$!p.user_obj.nickname</span>
-					<span class='icon-folder'>$!p.category</span>
-					<span class='icon-calendar'>$lang.format($p.created, 'yy-MM-dd HH:mm')</span>
-					<span class='icon-eye'>$p.reads</span>
-					<span class='icon-star-empty'>$p.likes</span>
-				</div>
-				<div class='content'>
-					$!lang.truncate($p.text, 150) <a href='/article?id=$p.id'>$lang.get('a.read.more')</a>
-				</div>
-				<div class='keywords icon-bookmark'>
-					#foreach($s in $p.keywords_obj)
-					<a href='/myblog?uid=$user.id&keyword=$s'>$s</a>
-					#end
-				</div>
-			</li>
-			#end
-		</ul>
+		<div class='list'>
+			<ul>
+				#foreach($p in $list)
+				<li class='article'>
+					<img src="$p.img"/>
+					<h1><a href='/article?id=$p.id'>$!lang.truncate($p.title, 30)</a></h1>
+					<div class='status'>
+						<span class='icon-user'>$!p.user_obj.nickname</span>
+						<span class='icon-folder'>$!p.category</span>
+						<span class='icon-calendar'>$lang.format($p.created, 'yy-MM-dd HH:mm')</span>
+						<span class='icon-eye'>$p.reads</span>
+						<span class='icon-star-empty'>$p.likes</span>
+					</div>
+					<div class='content'>
+						$!lang.truncate($p.text, 150) <a href='/article?id=$p.id'>$lang.get('a.read.more')</a>
+					</div>
+					<div class='keywords icon-bookmark'>
+						#foreach($s in $p.keywords_obj)
+						<a href='/myblog?uid=$user.id&keyword=$s'>$s</a>
+						#end
+					</div>
+				</li>
+				#end
+			</ul>
+			#parse('/cms/goto.page.html')
+		</div>
+
 		<div class='nav-right'>
 			<div class='search'>
 				<form class="search-inline" action="/myblog">
 					<input type="hidden" name="uid" value="$!user.id"/>
-			      	<input type="text" name="name" value="" placeholder="$lang.get('search.hint')">
+			      	<input type="text" name="wd" value="$!wd" placeholder="$lang.get('search.hint')">
 			      	<button type="submit" class="icon-search"></button>
 				</form>
 			</div>

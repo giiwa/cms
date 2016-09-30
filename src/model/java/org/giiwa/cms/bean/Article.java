@@ -30,6 +30,7 @@ import org.giiwa.core.bean.Helper.W;
 import org.giiwa.core.bean.Table;
 import org.giiwa.core.bean.UID;
 
+// TODO: Auto-generated Javadoc
 @Table(name = "cms_article")
 public class Article extends Bean {
 
@@ -383,9 +384,29 @@ public class Article extends Bean {
     }
   }
 
+  /**
+   * Load.
+   *
+   * @param q
+   *          the q
+   * @param n
+   *          the n
+   * @return the list
+   */
   public static List<Article> load(W q, int n) {
     Beans<Article> bs = Article.load(q, 0, n);
     return bs == null ? null : bs.getList();
+  }
+
+  /**
+   * Load.
+   *
+   * @param q
+   *          the q
+   * @return the article
+   */
+  public static Article load(W q) {
+    return Helper.load(q, Article.class);
   }
 
 }
