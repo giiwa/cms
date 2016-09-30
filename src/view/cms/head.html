@@ -12,13 +12,13 @@
 <link href='/cms/myblog.css' rel='stylesheet' />
 <script src="/js/jquery-2.1.4.min.js"></script>
 
-<title>$!user.nickname - $lang.parse("myblog.title", $this)</title>
+<title>$!user.nickname - $lang.get("myblog.title")</title>
 </head>
 <body>
 <header>
 	<div class='center'>
 		<div class='logo'>
-			$!helper.get('logo')
+			$lang.parse($!helper.get('logo'), $this)
 		</div>
 		<ul class='nav'>
 			#foreach($m in $cates)
