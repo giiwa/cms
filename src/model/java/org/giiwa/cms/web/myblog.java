@@ -45,15 +45,17 @@ public class myblog extends Model {
     if (u == null) {
       this.notfound();
     } else {
-      this.set("helper", new SettingHelper(uid));
       this.set("user", u);
+      this.set("helper", new SettingHelper(uid));
+      this.set("cates", Category.load(W.create("uid", uid).sort("seq", 1), 0, 100));
+      this.set("latest", Article.load(W.create("uid", uid).sort("created", -1), 5));
+      this.set("hotest", Article.load(W.create("uid", uid).sort("updated", -1), 5));
+
       int s = this.getInt("s");
       int n = this.getInt("n", 20, "number.per.page");
       W q = W.create(); // .and("uid", uid);
       Beans<Article> bs = Article.load(q.sort("created", -1), s, n);
       this.set(bs, s, n);
-
-      this.set("cates", Category.load(W.create("uid", uid).sort("seq", 1), 0, 100));
 
       this.show("/cms/myblog.home.html");
     }

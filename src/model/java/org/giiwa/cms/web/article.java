@@ -15,8 +15,10 @@
 package org.giiwa.cms.web;
 
 import org.giiwa.cms.bean.Article;
+import org.giiwa.cms.bean.Category;
 import org.giiwa.cms.bean.Comment;
 import org.giiwa.cms.bean.Folder;
+import org.giiwa.cms.bean.SettingHelper;
 import org.giiwa.core.bean.Beans;
 import org.giiwa.core.bean.Helper;
 import org.giiwa.core.bean.X;
@@ -36,7 +38,9 @@ import org.giiwa.framework.web.Path;
  */
 public class article extends Model {
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see org.giiwa.framework.web.Model#onGet()
    */
   @Path()
@@ -57,6 +61,13 @@ public class article extends Model {
     Article.Read.up(id, sid(), u == null ? -1 : u.getId());
 
     this.set("a", a);
+
+    this.set("user", a.getUser_obj());
+    this.set("helper", new SettingHelper(a.getUid()));
+    this.set("cates", Category.load(W.create("uid", a.getUid()).sort("seq", 1), 0, 100));
+    this.set("latest", Article.load(W.create("uid", a.getUid()).sort("created", -1), 5));
+    this.set("hotest", Article.load(W.create("uid", a.getUid()).sort("updated", -1), 5));
+
     this.show("/cms/article.html");
   }
 

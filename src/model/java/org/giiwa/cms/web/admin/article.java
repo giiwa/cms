@@ -96,6 +96,7 @@ public class article extends Model {
       if (list != null && list.size() > 0) {
         v.set("img", list.get(0).attr("src"));
       }
+      v.set("uid", login.getId());
       long id = Article.create(v);
 
       this.set(X.MESSAGE, lang.get("create.success"));

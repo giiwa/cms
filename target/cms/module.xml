@@ -6,7 +6,7 @@
   <package>org.giiwa.cms.web</package>
   <screenshot>/images/demo_screenshot.png</screenshot>
   <version>1.0.1</version>
-  <build>1609300758</build>
+  <build>1609300919</build>
   <enabled>true</enabled>
   <readme>content management module</readme>
   <listener>

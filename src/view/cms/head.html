@@ -20,12 +20,15 @@
 		<div class='logo'>
 			$lang.parse($!helper.get('logo'), $this)
 		</div>
-		<ul class='nav'>
+		<ul class='nav pull-right'>
+			#if($uri != '/myblog')
+			<li><a href='/myblog?uid=$user.id'>$lang.get('a.home')</a></li>
+			#end
 			#foreach($m in $cates)
 			<li><a href='$m.url'>$m.title</a></li>
 			#end
 			#if($me.id == $user.id)
-			<li><a href='/cms/setting/base'>$lang.get('a.cms.myblog.setting')</a></li>
+			<li><a href='/cms/setting/base'>$lang.get('a.setting')</a></li>
 			#end
 		</ul>
 	</div>

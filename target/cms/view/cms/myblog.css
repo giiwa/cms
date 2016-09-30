@@ -65,7 +65,13 @@ header .logo {
 }
 .nav > li > a {
 	padding: 0 10px;
+	line-height: 32px;
 }
+.nav > li > a:hover, .nav > li > a:focus, .nav > li > a:active {
+	background: #0b5008;
+	color: #fff;
+}
+
 .splash .center {
 	height: 200px;
 	position: relative;
@@ -89,8 +95,8 @@ li.article {
 	padding-left: 200px;
 	min-height: 200px;
 	position: relative;
-    border-bottom: 1px solid #ccc;
-    padding-bottom: 20px;	
+	border-bottom: 1px solid #ccc;
+	padding-bottom: 20px;
 }
 
 li.article h1 {
@@ -122,6 +128,7 @@ li.article > img {
 }
 .nav-right > div {
 	border: 1px solid #eee;
+	margin-bottom: 20px;	
 }
 .nav-right div.title {
 	background: #1661af;

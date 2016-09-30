@@ -383,4 +383,9 @@ public class Article extends Bean {
     }
   }
 
+  public static List<Article> load(W q, int n) {
+    Beans<Article> bs = Article.load(q, 0, n);
+    return bs == null ? null : bs.getList();
+  }
+
 }
