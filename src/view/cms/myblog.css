@@ -279,3 +279,15 @@ li.article .keywords {
 	background-color: #af7f12;
 }
 
+.setting .nav-left{
+	width: 200px;
+	float: left;
+}
+
+.setting .nav > li{
+	width: 100%;
+}
+
+.setting.panel{
+    border-top: 1px solid #aaa;	
+}
