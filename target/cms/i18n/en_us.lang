@@ -37,3 +37,6 @@ latest.title=Latest
 myblog.title=Myblog
 a.read.more=read more
 search.hint=Search article
+cms.notfound.result=No result!
+cms.search.title=Search results
+cms.list.title=Latest articles

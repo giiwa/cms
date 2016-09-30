@@ -37,3 +37,6 @@ latest.title=最新的文章
 myblog.title=个人博客
 a.read.more=阅读全文
 search.hint=搜索文章
+cms.notfound.result=没有找到结果！
+cms.search.title=　搜索结果
+cms.list.title=最新文章

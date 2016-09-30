@@ -46,8 +46,13 @@ header {
 	color: #333;
 	position: relative;
 }
-
+footer{
+    line-height: 42px;
+    border-top: 1px solid #ccc;	
+}
 .panel {
+	border: none;
+    box-shadow: none;	
 }
 
 .center {
@@ -88,7 +93,13 @@ header .logo {
 	width: 75%;
 	float: left;
 }
-
+.articles .list .title{
+	background: #1f715a;
+    line-height: 36px;
+    color: #fff;
+    text-indent: 10px;
+    font-size: 16px;	
+}
 .articles .list ul{
 	list-style: none;
 }
