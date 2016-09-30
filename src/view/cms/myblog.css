@@ -161,6 +161,7 @@ li.article .status {
 
 li.article .status span {
 	margin-right: 10px;
+	cursor: pointer;
 }
 li.article .status span:hover {
 	color: #32922e;
