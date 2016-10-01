@@ -49,6 +49,26 @@ public class Category extends Bean {
   @Column(name = "count")
   long                      count;
 
+  public long getUid() {
+    return uid;
+  }
+
+  public int getSeq() {
+    return seq;
+  }
+
+  public String getTitle() {
+    return title;
+  }
+
+  public String getUrl() {
+    return url;
+  }
+
+  public long getCount() {
+    return count;
+  }
+
   /**
    * Load.
    *
@@ -82,7 +102,21 @@ public class Category extends Bean {
     new Task() {
       @Override
       public void onExecute() {
-        
+        W q = W.create("uid", uid).sort("title", 1);
+        int s = 0;
+
+        List<Category> list = Category.load(q, s, 10);
+        while (list != null && list.size() > 0) {
+          for (Category c : list) {
+            long count = Helper.count(W.create("uid", uid).and("category", c.getTitle()), Article.class);
+            if (count != c.getCount()) {
+              Helper.update(W.create("uid", uid).and("title", c.getTitle()), V.create("count", count).ignore("updated"),
+                  Category.class);
+            }
+          }
+          s += list.size();
+          list = Category.load(q, s, 10);
+        }
       }
 
     }.schedule(0);

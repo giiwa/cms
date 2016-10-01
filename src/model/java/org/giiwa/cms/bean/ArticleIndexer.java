@@ -36,7 +36,7 @@ public class ArticleIndexer implements Indexer {
   public void bad(Object id, long flag) {
     // TODO Auto-generated method stub
     String node = Model.node();
-    Article.update(X.toLong(id, -1), V.create("index_flag", flag).set("index_state", "bad").set("updated", V.ignore));
+    Article.update(X.toLong(id, -1), V.create("index_flag", flag).set("index_state", "bad").ignore("updated"));
   }
 
   /*
@@ -48,7 +48,7 @@ public class ArticleIndexer implements Indexer {
   public void done(Object id, long flag) {
     // TODO Auto-generated method stub
     String node = Model.node();
-    Article.update(X.toLong(id, -1), V.create("index_flag", flag).set("index_state", "done").set("updated", V.ignore));
+    Article.update(X.toLong(id, -1), V.create("index_flag", flag).set("index_state", "done").ignore("updated"));
   }
 
   /*
