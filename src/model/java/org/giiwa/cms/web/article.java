@@ -222,10 +222,12 @@ public class article extends Model {
 
   @Path(path = "create", login = true)
   public void create() {
+    long uid = this.getLong("uid");
     if (method.isPost()) {
-      
+
     }
 
+    _usage(uid);
     this.show("/cms/article.create.html");
   }
 

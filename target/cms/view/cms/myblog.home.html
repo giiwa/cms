@@ -31,9 +31,9 @@
 					<div class='content'>
 						$!lang.truncate($p.text, 150) <a href='/article?id=$p.id'>$lang.get('a.read.more')</a>
 					</div>
-					<div class='keywords icon-bookmark'>
-						#foreach($s in $p.keywords_obj)
-						<a href='/myblog?uid=$user.id&keyword=$s'>$s</a>
+					<div class='tags icon-bookmark'>
+						#foreach($s in $p.tags)
+						<a href='/myblog?uid=$user.id&tag=$s'>$s</a>
 						#end
 					</div>
 				</li>
@@ -55,7 +55,7 @@
 			</div>
 			#if($me.id == $user.id)
 			<div class='compose'>
-				<a class='btn btn-success' href='/article/create'>$lang.get('a.compose')</a>
+				<a class='btn btn-success' href='/article/create?uid=$user.id'>$lang.get('a.compose')</a>
 			</div>
 			#end
 			<div class='latest'>
@@ -90,10 +90,10 @@
 					#end
 				</ul>
 			</div>
-			<div class='keywords'>
-				<div class='title'>$lang.get('keywords.title')</div>
+			<div class='tags'>
+				<div class='title'>$lang.get('tags.title')</div>
 				<ul>
-					#foreach($p in $kywords)
+					#foreach($p in $tags)
 					<li>
 						<span><a href='/article?id=$p.id'>$!lang.truncate($p.word, 20)($p.count)</a></span>
 					</li>

@@ -22,7 +22,7 @@ import org.apache.lucene.search.ScoreDoc;
 import org.apache.lucene.search.TopDocs;
 import org.giiwa.cms.bean.Article;
 import org.giiwa.cms.bean.Category;
-import org.giiwa.cms.bean.Keyword;
+import org.giiwa.cms.bean.Tag;
 import org.giiwa.cms.bean.SettingHelper;
 import org.giiwa.core.bean.X;
 import org.giiwa.core.bean.Beans;
@@ -115,7 +115,7 @@ public class myblog extends Model {
     this.set("latest", Article.load(W.create("uid", uid).sort("created", -1), 5));
     this.set("hotest", Article.load(W.create("uid", uid).sort("updated", -1), 5));
     this.set("categories", Category.load(W.create("uid", uid).sort("title", 1), 0, 5));
-    this.set("keywords", Keyword.load(W.create("uid", uid).sort("count", -1), 0, 5));
+    this.set("tags", Tag.load(W.create("uid", uid).sort("count", -1), 0, 5));
 
   }
 

@@ -262,7 +262,7 @@ a.page_1, a.page_2 {
 	width: initial;
 }
 
-li.article .keywords {
+li.article .tags {
 	color: #af7f12;
 }
 
@@ -274,7 +274,7 @@ li.article .keywords {
 	background-color: #2283c7;
 }
 
-.nav-right .keywords div.title {
+.nav-right .tags div.title {
 	background-color: #af7f12;
 }
 

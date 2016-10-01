@@ -14,6 +14,7 @@
 */
 package org.giiwa.cms.web.admin;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.giiwa.cms.bean.Article;
@@ -84,7 +85,16 @@ public class article extends Model {
   public void create() {
     if (method.isPost()) {
       JSON jo = this.getJSON();
-      V v = V.create().copy(jo, "title", "keywords", "category");
+      V v = V.create().copy(jo, "title", "category");
+      String tags = this.getString("tag");
+      String[] ss = tags.split("[,; ]");
+      List<String> l1 = new ArrayList<String>();
+      for (String s : ss) {
+        if (!X.isEmpty(s)) {
+          l1.add(s);
+        }
+      }
+      v.set("tags", l1);
       v.set("seq", this.getInt("seq"));
       v.set("commentable", X.isSame("on", this.getString("commentable")) ? "on" : "off");
       v.set("folderid", this.getLong("folderid"));
