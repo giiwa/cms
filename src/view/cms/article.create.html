@@ -1,5 +1,7 @@
 #parse('/cms/head.html')
 
+<script type="text/javascript" src="/ke/kindeditor-min.js"></script>
+
 <form action='/article/create'  method='post' class='form' enctype="multipart/form-data">
 	<input type='hidden' name='uid' value='$!uid' />
 	<div><label><h3>$lang.get('article.title')(<r>*</r>):</h3><input type='text' name='title' value="$!title"/></label></div>
@@ -12,4 +14,22 @@
 	<button type='submit'>$lang.get('btn.create')</button>
 </form>
 
+<script>
+$(function(){
+	var editor = KindEditor.create('textarea[richedit=true]', {
+				basePath : '/ke/',
+				resizeType : 1,
+				allowPreviewEmoticons : false,
+				allowImageUpload : true,
+				items : ['fontname', 'fontsize', '|', 'forecolor',
+						'hilitecolor', 'bold', 'italic', 'underline',
+						'removeformat', '|', 'justifyleft', 'justifycenter',
+						'justifyright', 'insertorderedlist',
+						'insertunorderedlist', '|', 'emoticons', 'image',
+						'link']
+			});
+	
+})	
+</script>
 #parse('/cms/foot.html')
+

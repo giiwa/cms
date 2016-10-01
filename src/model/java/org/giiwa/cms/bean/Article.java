@@ -182,11 +182,11 @@ public class Article extends Bean {
   /**
    * Delete.
    *
-   * @param id
+   * @param w
    *          the id
    */
-  public static void delete(long id) {
-    Helper.delete(id, Article.class);
+  public static int delete(W w) {
+    return Helper.delete(w, Article.class);
   }
 
   /**

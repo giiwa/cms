@@ -14,11 +14,15 @@
 */
 package org.giiwa.cms.web;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.giiwa.cms.bean.Article;
 import org.giiwa.cms.bean.Category;
 import org.giiwa.cms.bean.Comment;
 import org.giiwa.cms.bean.Folder;
 import org.giiwa.cms.bean.SettingHelper;
+import org.giiwa.core.base.Html;
 import org.giiwa.core.bean.Beans;
 import org.giiwa.core.bean.Helper;
 import org.giiwa.core.bean.X;
@@ -28,6 +32,7 @@ import org.giiwa.core.json.JSON;
 import org.giiwa.framework.bean.User;
 import org.giiwa.framework.web.Model;
 import org.giiwa.framework.web.Path;
+import org.jsoup.nodes.Element;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -63,7 +68,6 @@ public class article extends Model {
     this.set("a", a);
 
     this.set("user", a.getUser_obj());
-    this.set("helper", new SettingHelper(a.getUid()));
     _usage(a.getUid());
 
     this.show("/cms/article.detail.html");
@@ -71,6 +75,7 @@ public class article extends Model {
 
   private void _usage(long uid) {
 
+    this.set("helper", new SettingHelper(uid));
     this.set("cates", Category.load(W.create("uid", uid).sort("seq", 1), 0, 100));
     this.set("latest", Article.load(W.create("uid", uid).sort("created", -1), 5));
     this.set("hotest", Article.load(W.create("uid", uid).sort("updated", -1), 5));
@@ -197,6 +202,27 @@ public class article extends Model {
     this.response(jo);
   }
 
+  @Path(path = "delete")
+  public void delete() {
+    JSON jo = JSON.create();
+
+    long id = this.getLong("id");
+    User u = this.getUser();
+    int i = Article.delete(W.create(X.ID, id).and("uid", login.getId()));;
+    if (a == null) {
+      // Article.update(id, V.create("reads", count));
+      // jo.put("reads", count);
+      jo.put("id", id);
+      jo.put(X.STATE, 200);
+    } else {
+      jo.put("id", id);
+      jo.put(X.STATE, 201);
+      jo.put(X.MESSAGE, "already read");
+    }
+
+    this.response(jo);
+  }
+
   /**
    * Like.
    */
@@ -223,9 +249,36 @@ public class article extends Model {
   @Path(path = "create", login = true)
   public void create() {
     long uid = this.getLong("uid");
+    User user = User.load(uid);
     if (method.isPost()) {
 
+      JSON jo = this.getJSON();
+      V v = V.create().copy(jo, "title", "category");
+      String tags = this.getString("tag");
+      String[] ss = tags.split("[,; ]");
+      List<String> l1 = new ArrayList<String>();
+      for (String s : ss) {
+        if (!X.isEmpty(s)) {
+          l1.add(s);
+        }
+      }
+      v.set("tags", l1);
+      v.set("seq", this.getInt("seq"));
+      v.set("commentable", X.isSame("on", this.getString("commentable")) ? "on" : "off");
+      v.set("folderid", this.getLong("folderid"));
+      String content = this.getHtml("content");
+      v.set("content", content);
+      Html h = Html.create(content);
+      v.set("text", h.text());
+      List<Element> list = h.getTags("img");
+      if (list != null && list.size() > 0) {
+        v.set("img", list.get(0).attr("src"));
+      }
+      v.set("uid", this.getLong("uid"));
+      long id = Article.create(v);
+
     }
+    this.set("user", user);
 
     _usage(uid);
     this.show("/cms/article.create.html");
