@@ -14,7 +14,10 @@
 */
 package org.giiwa.cms.web.admin;
 
+import java.io.File;
+
 import org.giiwa.cms.bean.Folder;
+import org.giiwa.core.base.Http;
 import org.giiwa.core.bean.Beans;
 import org.giiwa.core.bean.X;
 import org.giiwa.core.json.JSON;
@@ -26,7 +29,9 @@ import org.giiwa.framework.web.Path;
 // TODO: Auto-generated Javadoc
 public class folder extends Model {
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see org.giiwa.framework.web.Model#onGet()
    */
   @Path(login = true, access = "access.cms.admin")
@@ -106,6 +111,16 @@ public class folder extends Model {
     this.set(d.getJSON());
     this.set("id", id);
     this.show("/admin/folder.edit.html");
+  }
+
+  public static void main(String[] args) {
+    String url = "http://joe.mac:8080/repo/cbnvy2grz15rv/1.%20Scene%201.mp3";
+    File f = new File("/Users/wujun/d/temp/f2.mp3");
+    JSON head = JSON.create();
+    head.put("Range", "bytes=4415488-");
+    int len = Http.download(url, head, f);
+
+    System.out.println("done, len=" + len);
   }
 
 }
