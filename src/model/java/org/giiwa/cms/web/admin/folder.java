@@ -15,10 +15,12 @@
 package org.giiwa.cms.web.admin;
 
 import java.io.File;
+import java.io.FileInputStream;
 
 import org.giiwa.cms.bean.Folder;
 import org.giiwa.core.base.Http;
 import org.giiwa.core.bean.Beans;
+import org.giiwa.core.bean.Helper;
 import org.giiwa.core.bean.X;
 import org.giiwa.core.json.JSON;
 import org.giiwa.core.bean.Helper.V;
@@ -114,13 +116,42 @@ public class folder extends Model {
   }
 
   public static void main(String[] args) {
-    String url = "http://joe.mac:8080/repo/cbnvy2grz15rv/1.%20Scene%201.mp3";
-    File f = new File("/Users/wujun/d/temp/f2.mp3");
+    String url = "http://www.giiwa.org/repo/ct13zbxq3wgnl/giiwa-1.2-1611111820.zip";
+    File f = new File("/Users/wujun/d/temp/repo.zip");
     JSON head = JSON.create();
-    head.put("Range", "bytes=4415488-");
+    head.put("Range", "bytes=1024-2048");
     int len = Http.download(url, head, f);
+    System.out.println("repo, done, len=" + len);
 
-    System.out.println("done, len=" + len);
+    url = "http://www.giiwa.org/giiwa-1.2-1611111820.zip";
+    File f1 = new File("/Users/wujun/d/temp/stat.zip");
+    head = JSON.create();
+    head.put("Range", "bytes=1024-2048");
+    len = Http.download(url, head, f);
+
+    System.out.println("static done, len=" + len);
+
+    try {
+      FileInputStream i1 = new FileInputStream(f);
+      byte[] b1 = new byte[10];
+      i1.read(b1);
+      System.out.print("repo=");
+      for (int i = 0; i < b1.length; i++) {
+        System.out.print(b1[i] + " ");
+      }
+      i1.close();
+
+      FileInputStream i2 = new FileInputStream(f1);
+      byte[] b2 = new byte[10];
+      i2.read(b2);
+      System.out.print("\r\nstat=");
+      for (int i = 0; i < b2.length; i++) {
+        System.out.print(b2[i] + " ");
+      }
+      i2.close();
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
   }
 
 }
